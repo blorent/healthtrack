@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Graphs{% endblock %}
+{% block head %}
+  {{ super() }}
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+{% endblock %}
+{% block content %}
+
+	<div id="health_data">
+	<h1>Your health data</h1>
+	
+
+		<div id="{{ chart|safe }}" class='chart'></div>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$(function () {
+			    $("#{{ chart|safe }}").highcharts({{ highcharts_code|safe }});
+			});
+		});
+		</script>
+
+	</div>
+
+{% endblock %}
